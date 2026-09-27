@@ -1,108 +1,162 @@
-# SpinalScan — Clinical Spine & Lumbar Radiology Diagnostic Platform
+# SpinalScan — Spine & Lumbar Problem Classification
 
-A clean, modern, and professional diagnostic platform for analyzing **Spine Vertebrae X-Rays** and **Lumbar Spine MRI Scans**.
+A deep learning-based medical imaging project for classifying **spine X-ray images** and **lumbar spine MRI scans** using pre-trained neural network models.
 
----
+## Overview
 
-## 🌐 Live Deployment on Vercel (`vercel.com`)
+This project uses **Deep Learning and Computer Vision** techniques to analyze spinal medical images and classify common spine and lumbar conditions.
 
-The application is pre-configured and optimized for **Vercel Serverless Functions** (`@vercel/python`):
+The project includes two classification tasks:
 
-- **Target URL:** `https://spinalscan.vercel.app`
-- **Configuration:** [vercel.json](file:///c:/Users/HP/OneDrive/Desktop/SpinalScan/vercel.json)
-- **Serverless Entrypoint:** [api/index.py](file:///c:/Users/HP/OneDrive/Desktop/SpinalScan/api/index.py)
-- **Deployment Bundle:** `SpinalScan-Vercel-Deployment.zip`
+* **Spine X-Ray Classification**
+* **Lumbar Spine MRI Classification**
 
-### 3-Step 1-Click Deployment via GitHub to Vercel:
+The models provide predicted classes along with confidence scores for the analyzed image.
 
-1. **Create Repository:**
-   - Go to [github.com/new](https://github.com/new).
-   - Enter Repository name: **`SpinalScan`**.
-   - Set to Public and click **Create repository**.
+## Classification Tasks
 
-2. **Upload Project Files (Important: Upload Extracted Files, NOT the .zip file itself):**
-   - In GitHub, click **Upload files** (or use Git CLI / GitHub Desktop).
-   - Drag and drop all the project files and folders:
-     - `api/`
-     - `sample_images/`
-     - `static/`
-     - `templates/`
-     - `index.html`
-     - `server.py`
-     - `predictor.py`
-     - `vercel.json`
-     - `requirements.txt`
-     - `.python-version`
-   - Click **Commit changes** to `main`.
+### Spine X-Ray
 
-3. **Deploy on Vercel:**
-   - Go to [vercel.com/new](https://vercel.com/new).
-   - Sign in with your GitHub account.
-   - Find your **`SpinalScan`** repository and click **Import**.
-   - Under **Framework Preset**, leave as **Other** (Vercel automatically detects `vercel.json` and `@vercel/python`).
-   - Click **Deploy**.
-   - Your website will immediately go live at:
-     👉 **`https://spinalscan.vercel.app`**
+The spine X-ray model classifies images into:
 
----
+* Normal
+* Scoliosis
+* Spondylolisthesis
 
-## 🚀 Local Launch (Open in Chrome)
+### Lumbar Spine MRI
 
-Double-click **`run_website.bat`** or run in PowerShell:
-```powershell
-python server.py
-```
-Open your browser at:
-👉 **[http://localhost:5000](http://localhost:5000)**
+The lumbar MRI model classifies images into:
 
----
+* Normal
+* Disc Herniation
+* Spinal Stenosis
 
-## 🌟 Clinical Modalities & Scope
+## Key Features
 
-1. **Spine X-Ray:**
-   - Detects **Normal Alignment**, **Scoliosis**, and **Spondylolisthesis**.
-   - Generates confidence score, percentage breakdown, and anatomical localization heatmap.
+* Image preprocessing and normalization
+* Data augmentation
+* Transfer learning
+* Spine X-ray classification
+* Lumbar MRI classification
+* Model training and validation
+* Accuracy and loss analysis
+* Confusion matrix evaluation
+* External image prediction
+* Prediction confidence scores
 
-2. **Lumbar Spine MRI:**
-   - Detects **Herniated Disc**, **Thecal Sac Stenosis**, and **No Stenosis**.
-   - Analyzes sagittal and axial MRI sections.
-   - Provides recommended clinical next steps.
+## Technologies Used
 
-3. **Dual-Scan Comprehensive Study:**
-   - Evaluates both a Spine X-Ray and a Lumbar MRI scan concurrently.
-   - Generates an integrated report comparing both spinal levels.
-   - One-click exportable clinical summary report (`.txt`).
+* Python
+* TensorFlow
+* Keras
+* NumPy
+* Pandas
+* Matplotlib
+* Seaborn
+* Scikit-learn
+* Kaggle Notebook
+* CNN / Transfer Learning
 
----
+## Models
 
-## 📁 Project Structure
+The project uses deep learning classification models based on transfer learning.
+
+### Spine X-Ray Model
+
+**MobileNetV2**
+
+Used for classifying spine X-ray images into Normal, Scoliosis, and Spondylolisthesis.
+
+### Lumbar MRI Model
+
+**EfficientNet**
+
+Used for classifying lumbar MRI images into Normal, Disc Herniation, and Spinal Stenosis.
+
+## Dataset
+
+The project was developed using medical imaging datasets available through **Kaggle**.
+
+### Spine X-Ray Dataset
+
+**The Vertebrae X-ray Images**
+
+Classes used:
 
 ```text
-├── vercel.json                           # Vercel routing & serverless build configuration
-├── api/
-│   └── index.py                          # Vercel Python serverless entrypoint
-├── requirements.txt                      # Lightweight dependencies (<250MB)
-├── .vercelignore                         # Excludes bulky raw training files
-├── .gitignore                            # Clean repo settings
-├── server.py                             # Production Flask web server & REST API
-├── templates/
-│   └── index.html                        # Professional medical blue UI (SpinalScan)
-├── static/
-│   ├── css/style.css                     # Medical blue theme & clean typography
-│   └── js/app.js                         # Dynamic scan analysis & reports
-├── predictor.py                          # Multi-runtime inference (TFLite & Keras)
-├── models/
-│   ├── spine_xray_classifier.tflite      # Optimized spine model (16 MB)
-│   ├── lumbar_mri_efficientnet.tflite    # Calibrated lumbar MRI model (16 MB)
-│   ├── spine_xray_classifier_final.keras # Keras spine model
-│   └── lumbar_mri_efficientnet_final.keras# Keras lumbar model
-├── sample_images/                        # Verified clinical sample scans
-├── SpinalScan-Vercel-Deployment.zip      # 30 MB pre-packaged deployment bundle
-├── run_website.bat                       # Local 1-click launcher
-└── README.md                             # Documentation
+Normal
+Scoliosis
+Spondylolisthesis
 ```
 
----
+### Lumbar MRI Dataset
 
-## 🔒 Clinical Disclaimer
-SpinalScan is designed as a medical diagnostic decision-support system. All algorithmic analyses must be clinically validated by a board-certified radiologist or orthopedic specialist.
+A lumbar spine MRI dataset was used for classification of:
+
+```text
+Normal
+Disc Herniation
+Spinal Stenosis
+```
+
+> **Note:** The datasets are not included in this repository. The models and notebooks were developed using the Kaggle dataset environment.
+
+## Results
+
+The trained models are evaluated using:
+
+* Training accuracy
+* Validation accuracy
+* Training and validation loss
+* Confusion matrix
+* Classification report
+* External image predictions
+
+Example prediction output:
+
+```text
+Predicted Condition: Scoliosis
+
+Normal:           2.10%
+Scoliosis:       94.20%
+Spondylolisthesis: 3.70%
+```
+
+## How to Run
+
+### Kaggle Notebook
+
+1. Open the project notebook in Kaggle.
+2. Add the required dataset to the notebook.
+3. Update the dataset path if necessary.
+4. Run the notebook cells sequentially.
+5. Upload or provide an external image for prediction.
+
+### Local Environment
+
+Install the required dependencies:
+
+```bash
+pip install tensorflow keras numpy pandas matplotlib seaborn scikit-learn
+```
+
+Then open the project notebook and run the training and prediction sections.
+
+## Project Structure
+
+```text
+SpinalScan/
+├── spine_xray_classification.ipynb
+├── lumbar_mri_classification.ipynb
+├── models/
+│   ├── spine_xray_classifier.keras
+│   └── lumbar_mri_classifier.keras
+├── sample_images/
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
+
+## Disclaimer
+
+This project is developed for **educational and research purposes**. The predictions generated by the models should not be considered a medical diagnosis. Clinical interpretation should be performed by qualified healthcare professionals.

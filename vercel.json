@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "name": "spinalscan",
+  "functions": {
+    "api/index.py": {
+      "includeFiles": "{templates/**,static/**,sample_images/**,models/**}"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/sample_images/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/static/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api/index.py"
+    }
+  ]
+}
